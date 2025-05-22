@@ -1,0 +1,8 @@
+import styled from "styled-components";
+
+export const Container = styled.header`
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+`;
