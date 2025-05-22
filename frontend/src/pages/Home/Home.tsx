@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useAtom } from 'jotai';
 import * as S from './Home.styles';
 import { Header } from '../../components';
 import { OrderList } from '../../features/orders/components/OrderList/OrderList';
-import { orders } from '../../features/orders/data';
+import { orders as ordersMock } from '../../features/orders/data';
 import { OrderDetails } from '../../features/orders/components/OrderDetails';
+import { ordersAtom } from '../../features/orders/state';
 
 export const Home: React.FC = () => {
-  const [selectedOrderId, setSelectedOrderId] = useState<string>('');
+  const [, setOrders] = useAtom(ordersAtom);
 
-  const selectedOrder = orders?.find(order => order.id === selectedOrderId);
+  useEffect(() => {
+    setOrders(ordersMock);
+  });
 
   return (
     <S.Container>
       <Header title="Gestor de Pedidos" />
       <S.Content>
-        <OrderList
-          orders={orders}
-          setSelectedOrderId={setSelectedOrderId}
-        />
-        <OrderDetails orderId={selectedOrder?.id} clientName={selectedOrder?.clientName} />
+        <OrderList />
+        <OrderDetails />
       </S.Content>
     </S.Container>
   );

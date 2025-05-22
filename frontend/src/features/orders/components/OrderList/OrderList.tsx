@@ -1,14 +1,12 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useAtom } from 'jotai';
 import { Order } from '../../types';
 import { ListItem } from '../ListItem';
 import * as S from './OrderList.styles';
+import { ordersAtom } from '../../state';
 
-type OrderListType = {
-  orders: Order[];
-  setSelectedOrderId: Dispatch<SetStateAction<string>>;
-};
+export const OrderList: React.FC = () => {
+  const [orders] = useAtom(ordersAtom);
 
-export const OrderList: React.FC<OrderListType> = ({ orders, setSelectedOrderId }) => {
   return (
     <S.Container>
       <S.Title>Pedidos</S.Title>
@@ -16,7 +14,6 @@ export const OrderList: React.FC<OrderListType> = ({ orders, setSelectedOrderId 
         <ListItem
           orderId={order.id}
           clientName={order.clientName}
-          setSelectedOrderId={setSelectedOrderId}
         />
       ))}
     </S.Container>

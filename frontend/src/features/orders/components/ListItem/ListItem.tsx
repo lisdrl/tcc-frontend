@@ -1,13 +1,15 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useAtom } from 'jotai';
 import * as S from './ListItem.styles';
+import { selectedOrderIdAtom } from '../../state';
 
 type ListItemType = {
   orderId: string;
   clientName: string;
-  setSelectedOrderId: Dispatch<SetStateAction<string>>;
 };
 
-export const ListItem: React.FC<ListItemType> = ({ orderId, clientName, setSelectedOrderId }) => {
+export const ListItem: React.FC<ListItemType> = ({ orderId, clientName }) => {
+  const [, setSelectedOrderId] = useAtom(selectedOrderIdAtom);
+
   function handleClick() {
     setSelectedOrderId(orderId);
   }
