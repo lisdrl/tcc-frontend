@@ -4,7 +4,7 @@ FROM node:20
 # Define o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia os arquivos package.json e package-lock.json (se existir)
+# Copia os arquivos de dependências
 COPY package*.json ./
 
 # Instala as dependências
@@ -16,5 +16,5 @@ COPY . .
 # Expõe a porta que o Vite usa
 EXPOSE 5173
 
-# Define o comando padrão (sobrescrito pelo docker-compose, mas útil pra debug)
+# Comando padrão para desenvolvimento
 CMD ["npm", "run", "dev", "--", "--host"]
