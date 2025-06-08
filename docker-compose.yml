@@ -6,11 +6,10 @@ services:
       context: ./frontend
     ports:
       - "5173:5173"
-    env_file:
-      - .env
     volumes:
       - ./frontend:/app
-      - /app/node_modules  # evita sobrescrever node_modules com a pasta vazia local
+      - /app/node_modules 
+      - ./frontend/.env:/app/.env 
     command: npm run dev -- --host
     develop:
       watch:
