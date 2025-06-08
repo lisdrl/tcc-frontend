@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './Header.styles';
-import { ChatListModal } from '../../features/chat/components/ChatListModal'; // We will create this component next
+import { ChatModal } from '../../features/chat/components/ChatModal'; // We will create this component next
 
 type HeaderType = {
   title: string;
@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderType> = ({ title }) => {
         </S.ChatButtonStyled>
       </S.Container>
       {isChatListModalOpen && (
-        <ChatListModal isOpen={isChatListModalOpen} onClose={toggleChatListModal} />
+        <ChatModal isOpen={isChatListModalOpen} onClose={toggleChatListModal} type='LIST' />
       )}
     </>
   );

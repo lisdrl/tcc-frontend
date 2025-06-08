@@ -1,2 +1,2 @@
 export * from './ChatButton';
-export * from './ChatListModal';
+export * from './ChatModal';
