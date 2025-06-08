@@ -5,4 +5,23 @@ export const Container = styled.header`
   color: white;
   padding: 1rem;
   text-align: center;
+  position: relative;
+`;
+
+export const ChatButtonStyled = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  padding: 0.5rem 1rem;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  &:hover {
+    background-color: #004085;
+  }
 `;
