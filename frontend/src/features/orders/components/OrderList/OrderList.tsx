@@ -12,8 +12,10 @@ export const OrderList: React.FC = () => {
       <S.Title>Pedidos</S.Title>
       {orders.map((order: Order) => (
         <ListItem
+          key={order.id}
           orderId={order.id}
-          clientName={order.clientName}
+          clientName={order.client.name}
+          clientId={order.client.id}
         />
       ))}
     </S.Container>

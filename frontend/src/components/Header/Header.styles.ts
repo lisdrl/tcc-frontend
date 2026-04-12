@@ -13,6 +13,9 @@ export const ChatButtonStyled = styled.button`
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
   background-color: #0056b3;
   color: white;

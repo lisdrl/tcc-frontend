@@ -12,3 +12,9 @@ export const Item = styled.li`
     background-color: #f0f0f0;
   }
 `;
+
+export const OrderHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
