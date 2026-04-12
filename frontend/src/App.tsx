@@ -4,7 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import { SENDBIRD_USER_ID } from './features/users/constants';
 import '@sendbird/uikit-react/dist/index.css';
 
-const SENDBIRD_APP_ID = import.meta.env.VITE_SENDBIRD_APP_ID ?? '';
+const SENDBIRD_APP_ID = 'DBF5D8B7-5B32-43EB-820E-BC85F173E0F9';
 
 export const App: React.FC = () => {
   return (
