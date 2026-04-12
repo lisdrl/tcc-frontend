@@ -1,0 +1,8 @@
+{
+  "name": "TCC Frontend",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "postCreateCommand": "npm ci",
+  "forwardPorts": [5173]
+}
