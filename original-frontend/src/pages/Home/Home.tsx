@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
 
   return (
     <S.Container>
-      <Header title="Gestor de Pedidos" />
+      <Header title="Gestor de Pedidos - Versão original" />
       <S.Content>
         <OrderList />
         <OrderDetails />

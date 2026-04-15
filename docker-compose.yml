@@ -1,18 +1,34 @@
 version: "3.8"
 
 services:
-  frontend:
+  original-frontend:
     build:
-      context: ./frontend
+      context: ./original-frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./frontend:/app
+      - ./original-frontend:/app
       - /app/node_modules 
-      - ./frontend/.env:/app/.env 
+      - ./original-frontend/.env:/app/.env 
     command: npm run dev -- --host
     develop:
       watch:
         - action: sync
-          path: ./frontend
+          path: ./original-frontend
+          target: /app
+
+  version-1:
+    build:
+      context: ./version-1
+    ports:
+      - "5174:5173"
+    volumes:
+      - ./version-1:/app
+      - /app/node_modules
+      - ./version-1/.env:/app/.env
+    command: npm run dev -- --host
+    develop:
+      watch:
+        - action: sync
+          path: ./version-1
           target: /app
