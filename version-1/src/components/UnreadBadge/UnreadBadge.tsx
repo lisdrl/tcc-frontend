@@ -11,7 +11,7 @@ export const UnreadBadge: React.FC<UnreadBadgeProps> = ({ count, label }) => {
   }
 
   return (
-    <S.Badge aria-label={label ?? `${count} mensagens nao lidas`}>
+    <S.Badge aria-label={label ?? `${count} mensagens não lidas`}>
       {count}
     </S.Badge>
   );

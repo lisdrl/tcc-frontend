@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
 import * as S from './ChatModal.styles';
-import GroupChannelList from '@sendbird/uikit-react/GroupChannelList';
-import { GroupChannel } from '@sendbird/uikit-react/GroupChannel';
-import { GroupChannel as GroupChannelType } from '@sendbird/chat/groupChannel';
+import SendbirdGroupChannelList from '@sendbird/uikit-react/GroupChannelList';
+import { GroupChannel as SendbirdGroupChannel } from '@sendbird/uikit-react/GroupChannel';
+import type { GroupChannel as SendbirdGroupChannelType } from '@sendbird/chat/groupChannel';
+import type { ConversationId } from '../../types';
 
 interface ChatModalProps {
   isOpen: boolean;
   onClose: () => void;
-  type: 'LIST' | 'SINGLE';
-  channelUrl?: string;
+  mode: 'list' | 'conversation';
+  conversationId?: ConversationId;
 }
 
-export const ChatModal: React.FC<ChatModalProps> = ({ isOpen, onClose, type, channelUrl }) => {
-  const [currentChannel, setCurrentChannel] = useState<GroupChannelType | null>(null);
-  const isChatList = type == 'LIST';
+export const ChatModal: React.FC<ChatModalProps> = ({
+  isOpen,
+  onClose,
+  mode,
+  conversationId,
+}) => {
+  const [currentConversation, setCurrentConversation] =
+    useState<SendbirdGroupChannelType | null>(null);
+  const isChatList = mode === 'list';
 
-  const handleSetCurrentChannel = (channel: GroupChannelType) => {
-    setCurrentChannel(channel);
+  const handleSetCurrentConversation = (conversation: SendbirdGroupChannelType) => {
+    setCurrentConversation(conversation);
   };
 
   if (!isOpen) {
@@ -39,15 +46,15 @@ export const ChatModal: React.FC<ChatModalProps> = ({ isOpen, onClose, type, cha
         <S.ChannelListContainer>
           {isChatList ? (
             <>
-              <GroupChannelList
-                onChannelSelect={handleSetCurrentChannel}
-                onChannelCreated={handleSetCurrentChannel}
-                selectedChannelUrl={currentChannel?.url ?? ''}
+              <SendbirdGroupChannelList
+                onChannelSelect={handleSetCurrentConversation}
+                onChannelCreated={handleSetCurrentConversation}
+                selectedChannelUrl={currentConversation?.url ?? ''}
               />
-              <GroupChannel channelUrl={currentChannel?.url ?? ''} />
+              <SendbirdGroupChannel channelUrl={currentConversation?.url ?? ''} />
             </>
           ) : (
-            <GroupChannel channelUrl={channelUrl ?? ''} />
+            <SendbirdGroupChannel channelUrl={conversationId ?? ''} />
           )}
         </S.ChannelListContainer>
       </S.ModalContent>

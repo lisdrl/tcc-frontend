@@ -9,12 +9,13 @@ Read these files in order:
 1. `project-overview.md` - thesis goal, application domain, and comparison versions.
 2. `repository-map.md` - current directory layout, commands, and runtime notes.
 3. `sendbird-coupling-map.md` - where the original code is coupled to Sendbird today.
-4. `comparison-criteria.md` - how versions should be compared in the MBA project.
+4. `version-1-decoupling-approach.md` - facade approach implemented in Version 1.
+5. `comparison-criteria.md` - how versions should be compared in the MBA project.
 
 ## Current State
 
 - `original-frontend` is Version 0: the baseline implementation with Sendbird highly coupled to React components and app setup.
-- `version-1` is currently a copy of `original-frontend` but soon will be refactored following some decoupling approaches.
+- `version-1` is the first decoupling experiment. It uses a facade approach that centralizes direct Sendbird usage inside `features/chat`.
 - Version 2 is planned but does not exist in this repository yet.
 
 ## Important Constraint

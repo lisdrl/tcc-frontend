@@ -2,19 +2,18 @@ import { useAtom } from 'jotai';
 import * as S from './OrderDetails.styles';
 import { selectedOrderIdAtom } from '../../state';
 import { useOrderById } from '../../hooks';
-import { SENDBIRD_USER_ID } from '../../../users/constants';
 import { useState } from 'react';
-import { ChatButton, ChatModal } from '../../../chat/components';
+import { ChatButton, ChatModal, type ConversationId } from '../../../chat';
 
 export const OrderDetails: React.FC = () => {
   const [selectedOrderId] = useAtom(selectedOrderIdAtom);
   const selectedOrder = useOrderById(selectedOrderId);
   const [isChatListModalOpen, setIsChatListModalOpen] = useState(false);
   const [showChat, setShowChat] = useState(false);
-  const [channelUrl, setChannelUrl] = useState('');
+  const [conversationId, setConversationId] = useState<ConversationId | null>(null);
 
-  function handleClickChat(url: string) {
-    setChannelUrl(url);
+  function handleConversationStarted(nextConversationId: ConversationId) {
+    setConversationId(nextConversationId);
     setShowChat(true);
     setIsChatListModalOpen(true);
   }
@@ -26,16 +25,15 @@ export const OrderDetails: React.FC = () => {
           <h2>{`Pedido #${selectedOrder.id}`}</h2>
           <p>Cliente: {selectedOrder.client.name}</p>
           <ChatButton
-            onCreateChannel={handleClickChat}
-            clientId={selectedOrder.client.id}
-            userId={SENDBIRD_USER_ID}
+            onConversationStarted={handleConversationStarted}
+            clientUserId={selectedOrder.client.id}
           />
-          {showChat && channelUrl && (
+          {showChat && conversationId && (
             <ChatModal
               isOpen={isChatListModalOpen}
               onClose={() => setIsChatListModalOpen(false)}
-              type="SINGLE"
-              channelUrl={channelUrl}
+              mode="conversation"
+              conversationId={conversationId}
             />
           )}
         </>
