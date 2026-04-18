@@ -32,3 +32,19 @@ services:
         - action: sync
           path: ./version-1
           target: /app
+
+  version-2:
+    build:
+      context: ./version-2
+    ports:
+      - "5175:5173"
+    volumes:
+      - ./version-2:/app
+      - /app/node_modules
+      - ./version-2/.env:/app/.env
+    command: npm run dev -- --host
+    develop:
+      watch:
+        - action: sync
+          path: ./version-2
+          target: /app

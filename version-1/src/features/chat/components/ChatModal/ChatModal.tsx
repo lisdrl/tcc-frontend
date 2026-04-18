@@ -39,8 +39,8 @@ export const ChatModal: React.FC<ChatModalProps> = ({
       <S.ModalContent onClick={handleContentClick}>
         <S.ModalHeader>
           <S.ModalTitle>{isChatList ? 'Chats Ativos' : 'Conversa'}</S.ModalTitle>
-          <S.CloseButton onClick={onClose} aria-label="Fechar modal">
-            &times;
+          <S.CloseButton type="button" onClick={onClose} aria-label="Fechar modal">
+            ×
           </S.CloseButton>
         </S.ModalHeader>
         <S.ChannelListContainer>
