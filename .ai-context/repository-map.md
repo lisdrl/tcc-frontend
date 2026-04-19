@@ -2,12 +2,12 @@
 
 ## Top-Level Directories
 
-- `original-frontend/`
+- `version-0/`
   - Version 0 baseline.
   - React + TypeScript + Vite application.
   - Chat is tightly coupled to Sendbird SDK and Sendbird UIKit.
 - `version-1/`
-  - Currently a copy of `original-frontend`.
+  - Currently a copy of `version-0`.
   - Intended target for the first decoupling approach.
 - `.devcontainer/`
   - Development container configuration.
@@ -16,7 +16,7 @@
 
 ## Version 0 Application Structure
 
-Important folders inside `original-frontend/src`:
+Important folders inside `version-0/src`:
 
 - `App.tsx`
   - App-level provider setup.
@@ -40,7 +40,7 @@ Run commands from the relevant version directory.
 For Version 0:
 
 ```sh
-cd original-frontend
+cd version-0
 npm run build
 npm run lint
 npm run dev
@@ -58,13 +58,13 @@ npm run dev
 Docker compose services:
 
 ```sh
-docker compose up --build original-frontend
+docker compose up --build version-0
 docker compose up --build version-1
 ```
 
 Ports:
 
-- `original-frontend`: `http://localhost:5173`
+- `version-0`: `http://localhost:5173`
 - `version-1`: `http://localhost:5174`
 
 ## Runtime Notes
@@ -76,6 +76,6 @@ Ports:
 
 ## Git/Change Safety
 
-- Preserve `original-frontend` as the baseline unless explicitly asked otherwise.
+- Preserve `version-0` as the baseline unless explicitly asked otherwise.
 - Prefer implementing decoupling experiments in `version-1` or future version directories.
 - If generated files such as `dist/` or `node_modules/` already exist, avoid editing or relying on them for architectural conclusions.

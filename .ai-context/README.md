@@ -15,10 +15,10 @@ Read these files in order:
 
 ## Current State
 
-- `original-frontend` is Version 0: the baseline implementation with Sendbird highly coupled to React components and app setup.
+- `version-0` is Version 0: the baseline implementation with Sendbird highly coupled to React components and app setup.
 - `version-1` is the first decoupling experiment. It uses a facade approach that centralizes direct Sendbird usage inside `features/chat`.
 - `version-2` is the second decoupling experiment. It uses provider-neutral chat contracts plus a Sendbird adapter implementation.
 
 ## Important Constraint
 
-Do not change `original-frontend` unless the task explicitly asks for a baseline fix. It should remain a stable comparison point for the highly coupled implementation.
+Do not change `version-0` unless the task explicitly asks for a baseline fix. It should remain a stable comparison point for the highly coupled implementation.

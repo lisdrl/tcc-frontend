@@ -29,7 +29,7 @@ Questions:
 
 Possible measures:
 
-- `git diff --stat original-frontend version-1` is not directly meaningful because they are separate copies, but file-by-file comparison can still estimate changed surfaces.
+- `git diff --stat version-0 version-1` is not directly meaningful because they are separate copies, but file-by-file comparison can still estimate changed surfaces.
 - Compare equivalent paths between versions.
 - Record modified files by feature area:
   - App shell.

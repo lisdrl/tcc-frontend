@@ -10,8 +10,8 @@ export const useTotalUnreadMessages = (): ChatCountState => {
 
   useEffect(() => {
     let isMounted = true;
-
     setIsLoading(true);
+    setError(null);
 
     const unsubscribe = chatClient.subscribeToTotalUnreadCount((nextCount) => {
       if (isMounted) {

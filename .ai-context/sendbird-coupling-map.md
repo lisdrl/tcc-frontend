@@ -4,7 +4,7 @@ This file documents where the current Version 0 code is coupled to Sendbird. Use
 
 ## App Shell Coupling
 
-File: `original-frontend/src/App.tsx`
+File: `version-0/src/App.tsx`
 
 - Imports `SendbirdProvider` from `@sendbird/uikit-react/SendbirdProvider`.
 - Imports Sendbird UIKit CSS globally.
@@ -14,7 +14,7 @@ File: `original-frontend/src/App.tsx`
 
 ## Header Coupling
 
-File: `original-frontend/src/components/Header/Header.tsx`
+File: `version-0/src/components/Header/Header.tsx`
 
 - Imports `useSendbird` from `@sendbird/uikit-react`.
 - Imports `UserEventHandler` from `@sendbird/chat`.
@@ -26,7 +26,7 @@ File: `original-frontend/src/components/Header/Header.tsx`
 
 ## Order Row Coupling
 
-File: `original-frontend/src/features/orders/components/ListItem/ListItem.tsx`
+File: `version-0/src/features/orders/components/ListItem/ListItem.tsx`
 
 - Imports `useSendbird` from `@sendbird/uikit-react`.
 - Imports `GroupChannelHandler` and `QueryType` from `@sendbird/chat/groupChannel`.
@@ -38,7 +38,7 @@ File: `original-frontend/src/features/orders/components/ListItem/ListItem.tsx`
 
 ## Order Details Coupling
 
-File: `original-frontend/src/features/orders/components/OrderDetails/OrderDetails.tsx`
+File: `version-0/src/features/orders/components/OrderDetails/OrderDetails.tsx`
 
 - Imports `SENDBIRD_USER_ID`.
 - Passes Sendbird user id into `ChatButton`.
@@ -47,7 +47,7 @@ File: `original-frontend/src/features/orders/components/OrderDetails/OrderDetail
 
 ## Chat Button Coupling
 
-File: `original-frontend/src/features/chat/components/ChatButton/ChatButton.tsx`
+File: `version-0/src/features/chat/components/ChatButton/ChatButton.tsx`
 
 - Calls `useCreateChannel`.
 - Uses provider-oriented prop names such as `onCreateChannel`.
@@ -55,7 +55,7 @@ File: `original-frontend/src/features/chat/components/ChatButton/ChatButton.tsx`
 
 ## Channel Creation Hook Coupling
 
-File: `original-frontend/src/features/chat/hooks/useCreateChannel/index.ts`
+File: `version-0/src/features/chat/hooks/useCreateChannel/index.ts`
 
 - Imports `useSendbird` from `@sendbird/uikit-react`.
 - Reads the Sendbird SDK from UIKit state.
@@ -67,7 +67,7 @@ File: `original-frontend/src/features/chat/hooks/useCreateChannel/index.ts`
 
 ## Chat Modal Coupling
 
-File: `original-frontend/src/features/chat/components/ChatModal/ChatModal.tsx`
+File: `version-0/src/features/chat/components/ChatModal/ChatModal.tsx`
 
 - Imports `GroupChannelList` from Sendbird UIKit.
 - Imports `GroupChannel` from Sendbird UIKit.
@@ -75,13 +75,13 @@ File: `original-frontend/src/features/chat/components/ChatModal/ChatModal.tsx`
 - Stores Sendbird channel objects in component state.
 - Passes Sendbird channel URLs to UIKit components.
 
-File: `original-frontend/src/features/chat/components/ChatModal/ChatModal.styles.ts`
+File: `version-0/src/features/chat/components/ChatModal/ChatModal.styles.ts`
 
 - Styles Sendbird UIKit internal class names.
 
 ## User Constant Coupling
 
-File: `original-frontend/src/features/users/constants/index.ts`
+File: `version-0/src/features/users/constants/index.ts`
 
 - Stores the current chat user as `SENDBIRD_USER_ID`.
 - Leaks the provider name into app/domain code.
@@ -90,7 +90,7 @@ File: `original-frontend/src/features/users/constants/index.ts`
 
 Files:
 
-- `original-frontend/package.json`
+- `version-0/package.json`
 - `version-1/package.json`
 
 Current dependency:

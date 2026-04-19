@@ -1,20 +1,20 @@
 version: "3.8"
 
 services:
-  original-frontend:
+  version-0:
     build:
-      context: ./original-frontend
+      context: ./version-0
     ports:
       - "5173:5173"
     volumes:
-      - ./original-frontend:/app
+      - ./version-0:/app
       - /app/node_modules 
-      - ./original-frontend/.env:/app/.env 
+      - ./version-0/.env:/app/.env 
     command: npm run dev -- --host
     develop:
       watch:
         - action: sync
-          path: ./original-frontend
+          path: ./version-0
           target: /app
 
   version-1:
