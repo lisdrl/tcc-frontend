@@ -26,6 +26,7 @@ Thumbs.db
 
 # Optional cache folders
 .cache/
+.scannerwork/
+.sonar/
 
 .clineignore
-

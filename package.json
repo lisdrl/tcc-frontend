@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "sonar:up": "docker compose --profile sonar up -d sonarqube",
+    "sonar:down": "docker compose --profile sonar stop sonarqube",
+    "sonar:scan:version-0": "docker compose --profile sonar run --rm sonar-scanner-version-0",
+    "sonar:scan:version-1": "docker compose --profile sonar run --rm sonar-scanner-version-1",
+    "sonar:scan:version-2": "docker compose --profile sonar run --rm sonar-scanner-version-2",
+    "sonar:scan:all": "npm run sonar:scan:version-0 && npm run sonar:scan:version-1 && npm run sonar:scan:version-2"
+  },
   "dependencies": {
     "jotai": "^2.12.4"
   }

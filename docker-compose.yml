@@ -1,4 +1,17 @@
-version: "3.8"
+x-sonar-scanner: &sonar-scanner
+  image: sonarsource/sonar-scanner-cli:latest
+  profiles:
+    - sonar
+  depends_on:
+    - sonarqube
+  environment:
+    SONAR_HOST_URL: http://sonarqube:9000
+    SONAR_TOKEN: ${SONAR_TOKEN:-}
+  entrypoint:
+    - /bin/sh
+    - -c
+  command:
+    - if [ -z "$$SONAR_TOKEN" ]; then echo "Set SONAR_TOKEN before running the scanner."; exit 1; fi; sonar-scanner
 
 services:
   version-0:
@@ -64,3 +77,39 @@ services:
         - action: sync
           path: ./version-2
           target: /app
+
+  sonarqube:
+    image: sonarqube:community
+    profiles:
+      - sonar
+    ports:
+      - "9000:9000"
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+  sonar-scanner-version-0:
+    <<: *sonar-scanner
+    working_dir: /usr/src
+    volumes:
+      - ./version-0:/usr/src
+
+  sonar-scanner-version-1:
+    <<: *sonar-scanner
+    working_dir: /usr/src
+    volumes:
+      - ./version-1:/usr/src
+
+  sonar-scanner-version-2:
+    <<: *sonar-scanner
+    working_dir: /usr/src
+    volumes:
+      - ./version-2:/usr/src
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
