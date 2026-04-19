@@ -17,6 +17,22 @@ services:
           path: ./version-0
           target: /app
 
+  comet-version-0:
+    build:
+      context: ./comet-version-0
+    ports:
+      - "5176:5173"
+    volumes:
+      - ./comet-version-0:/app
+      - /app/node_modules
+      - ./comet-version-0/.env:/app/.env
+    command: npm run dev -- --host
+    develop:
+      watch:
+        - action: sync
+          path: ./comet-version-0
+          target: /app
+
   version-1:
     build:
       context: ./version-1
