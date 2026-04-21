@@ -55,7 +55,7 @@ export const CloseButton = styled.button`
 
 export const ChannelListContainer = styled.div`
   display: flex;
-  height: 500px; // Default height, can be adjusted
+  height: 500px;
   overflow-y: auto;
 
   .sendbird-channel-list__header {
