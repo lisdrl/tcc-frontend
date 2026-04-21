@@ -16,7 +16,6 @@ Para rodar sem Docker:
 Para rodar com Docker:
 
 - Docker
-- Docker Compose
 
 ## Rodando com Docker
 
@@ -91,26 +90,3 @@ npm run dev -- --port 5175
 ```
 
 Acesse em: http://localhost:5175
-
-## Scripts úteis
-
-Dentro de cada versão, os principais scripts disponíveis são:
-
-```bash
-npm run dev
-npm run build
-npm run lint
-npm run format
-npm run preview
-```
-
-Na raiz do projeto há também scripts para executar análises do SonarQube via Docker:
-
-```bash
-npm run sonar:up
-npm run sonar:scan:version-0
-npm run sonar:scan:version-1
-npm run sonar:scan:version-2
-npm run sonar:scan:all
-npm run sonar:down
-```
